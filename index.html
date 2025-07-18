@@ -1,1 +1,28 @@
-index.html
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تتبع المرضى</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>تتبع المرضى</h1>
+  <form id="patientForm">
+    <input type="text" placeholder="اسم المريض" id="name" required>
+    <input type="date" id="admitDate" required>
+    <button type="submit">إضافة</button>
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th>الاسم</th>
+        <th>تاريخ الدخول</th>
+        <th>اليوم الثاني</th>
+        <th>اليوم الخامس</th>
+      </tr>
+    </thead>
+    <tbody id="patientsTable"></tbody>
+  </table>
+  <script src="script.js"></script>
+</body>
+</html>
