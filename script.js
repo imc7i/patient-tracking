@@ -1,31 +1,22 @@
-body {
-  font-family: 'Arial', sans-serif;
-  direction: rtl;
-  text-align: right;
-  padding: 20px;
-  background-color: #f9f9f9;
-}
+document.getElementById("patientForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const name = document.getElementById("name").value;
+  const admitDate = new Date(document.getElementById("admitDate").value);
+  
+  const day2 = new Date(admitDate);
+  day2.setDate(admitDate.getDate() + 2);
 
-h1 {
-  color: #333;
-}
+  const day5 = new Date(admitDate);
+  day5.setDate(admitDate.getDate() + 5);
 
-form {
-  margin-bottom: 20px;
-}
+  const format = d => d.toISOString().split('T')[0];
 
-input, button {
-  padding: 10px;
-  margin: 5px;
-}
+  const table = document.getElementById("patientsTable");
+  const row = table.insertRow();
+  row.insertCell(0).textContent = name;
+  row.insertCell(1).textContent = format(admitDate);
+  row.insertCell(2).textContent = format(day2);
+  row.insertCell(3).textContent = format(day5);
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: white;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 10px;
-}
+  document.getElementById("patientForm").reset();
+});
